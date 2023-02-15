@@ -1,4 +1,16 @@
+import {useState, useEffect} from "react"
+
+
 function Formulario () {
+    const [nombre, setNombre] = useState("")
+    const [nombrePropietario, setNombrePropietario] = useState("")
+    const [email, setEmail] = useState("")
+    const [alta, setAlta] = useState("")
+    const [sintomas, setSintomas] = useState("")
+
+
+
+
     return (
         <div className="md:w-1/2 lg:w-2/5">
             <h2 className="font-bold text-center text-2xl">Seguimiento de Pacientes </h2>
@@ -17,6 +29,8 @@ function Formulario () {
                 className=" w-full border-2 rounded-md placeholder-gray-400"
                 type="text"
                 placeholder="Nombre de la mascota"
+                value={nombre}
+                onChange={(e)=> setNombre(e.target.value)}
                 />    
             </div>
             <div className="mb-3" >
@@ -27,6 +41,8 @@ function Formulario () {
                 className=" w-full border-2 rounded-md placeholder-gray-400"
                 type="text"
                 placeholder="Nombre del propietario"
+                value={nombrePropietario}
+                onChange={(e)=> setNombre(e.target.value)}
                 />    
             </div>
             <div
@@ -38,6 +54,8 @@ function Formulario () {
                 className=" w-full border-2 rounded-md placeholder-gray-400"
                 type="email"
                 placeholder="Email@email.com"
+                value={email}
+                onChange={(e)=> setNombre(e.target.value)}
                 />    
             </div>
             <div className="mb-3">
@@ -47,6 +65,8 @@ function Formulario () {
                 <input
                 className=" w-full border-2 rounded-md placeholder-gray-400"
                 type="date"
+                value={alta}
+                onChange={(e)=> setNombre(e.target.value)}
                 
                 />    
             </div>
@@ -54,7 +74,8 @@ function Formulario () {
             <label
                 className="text-gray-800 uppercase block font-bold">
                     Sintomas</label>
-            <textarea className="w-full" placeholder="Describe los sintomas">
+            <textarea className="w-full" placeholder="Describe los sintomas" value={sintomas}
+                onChange={(e)=> setNombre(e.target.value)}>
 
             </textarea>
             </div>
