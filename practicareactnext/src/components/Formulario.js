@@ -1,22 +1,48 @@
 import {useState, useEffect} from "react"
+import Errores from "./Errores"
+import Pacientes from "./Pacientes"
 
 
-function Formulario () {
+ 
+function Formulario ({pacientes, setPacientes}) {
     const [nombre, setNombre] = useState("")
     const [nombrePropietario, setNombrePropietario] = useState("")
     const [email, setEmail] = useState("")
     const [alta, setAlta] = useState("")
     const [sintomas, setSintomas] = useState("")
 
-    const handleSubmit = () => {
+    const [error, setError] = useState(false)
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
           // VALIDACION DEL FORMULARIO
 
           if([nombre,nombrePropietario,email,alta,sintomas].includes("")){
             console.log("hay al menos un campo vacio")
+            setError(true)
+
         }else{
-            console.log("todos llenos")
-        }
+           setError(false)
+
+            // objetos de pacientes
+            const objetoPacientes ={
+                nombre,
+                nombrePropietario,
+                email,
+                alta,
+                sintomas
+
+            }
+            setPacientes([...pacientes, objetoPacientes])
+
+
+            setNombre("")
+            setNombrePropietario("")
+            setEmail ("")
+            setAlta("")
+            setSintomas("")
+
+         }
         
                 // console.log("confirmando formulario")
     }
@@ -34,9 +60,14 @@ function Formulario () {
             <span className="text-red-800 text-bold "
             >Administralos</span>
         </p>
+         
         <form 
         onSubmit={handleSubmit}
         className="bg-gray-100  mt-5 shadow-md rounded-lg p-8 px-5">
+
+
+            {error && <Errores mensaje="Todos los campos son obligatorios"/> } 
+
             <div className="mb-3">
                 <label
                 className="text-gray-800 uppercase block font-bold">
@@ -98,7 +129,7 @@ function Formulario () {
             <div>
                 <input
                 type="submit"
-                className="bg-red-800 w-full border-2 rounded-md hover:bg-red-600 text-white"/>
+                className="bg-red-800 w-full border-2 rounded-md hover:bg-red-600 text-white uppercase"/>
         
             </div>
             
