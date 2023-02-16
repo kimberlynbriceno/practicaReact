@@ -1,7 +1,7 @@
 import Pacientes from "./Pacientes";
 
 
-function Listado ({pacientes}) {
+function Listado ({pacientes, setPaciente}) {
 //   console.log(pacientes)
 
     return ( 
@@ -10,18 +10,21 @@ function Listado ({pacientes}) {
             <p className="text-ld text-center mt-2">Administra tus {""} <span className="text-red-800 text-bold">Pacientes y Citas</span></p>
 
         
-        {pacientes.map( (pacientes) => {
+        {pacientes.map( pacientes => {
 
              return(
-                    <h1>desde map</h1>
+                <Pacientes
+                key={pacientes.id}
+                pacientes={pacientes}
+                setPaciente={setPaciente}/>
                 )
 
         }
-         )}
-
-        <Pacientes/>
+         )} 
 
         
+
+
         </div>
      );
 }

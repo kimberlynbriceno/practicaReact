@@ -4,7 +4,7 @@ import Pacientes from "./Pacientes"
 
 
  
-function Formulario ({pacientes, setPacientes}) {
+function Formulario ({pacientes, setPacientes, paciente}) {
     const [nombre, setNombre] = useState("")
     const [nombrePropietario, setNombrePropietario] = useState("")
     const [email, setEmail] = useState("")
@@ -12,6 +12,18 @@ function Formulario ({pacientes, setPacientes}) {
     const [sintomas, setSintomas] = useState("")
 
     const [error, setError] = useState(false)
+
+    console.log(paciente)
+
+    const generarId = () => {
+        const random = Math.random().toString(36).substring(2)
+        const fecha = Date.now().toString(32)
+        return(
+            random + fecha
+        )
+    }
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -30,7 +42,8 @@ function Formulario ({pacientes, setPacientes}) {
                 nombrePropietario,
                 email,
                 alta,
-                sintomas
+                sintomas,
+                id : generarId()
 
             }
             setPacientes([...pacientes, objetoPacientes])
