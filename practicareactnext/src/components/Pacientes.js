@@ -1,5 +1,7 @@
+
 function Pacientes ({pacientes,setPaciente}) {
-    console.log(pacientes)
+   
+
 
     return ( 
         <div className="bg-gray-100 shadow-md px-5 py-10 rounded-xl m-5 mr-1 ">
@@ -20,7 +22,8 @@ function Pacientes ({pacientes,setPaciente}) {
         className="font-normal normal-case">{pacientes.sintomas}</span></p>
 
         <div className="flex justify-between">
-            <button type="button" onClick={(pacientes) => setPaciente}
+            <button type="button"
+             onClick={() => setPaciente(pacientes)}
             className="bg-red-800 rounded-md uppercase text-white p-3 font-bold mx-4 hover:bg-red-600  w-2/5 " >
                 editar
             </button>
@@ -29,7 +32,7 @@ function Pacientes ({pacientes,setPaciente}) {
             </button>
         </div>
         </div>
-     );
+     ); 
 }
 
 export default Pacientes ;

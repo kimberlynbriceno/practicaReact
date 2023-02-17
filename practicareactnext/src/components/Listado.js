@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import Pacientes from "./Pacientes";
 
 
 function Listado ({pacientes, setPaciente}) {
-//   console.log(pacientes)
+
+    useEffect(()=>{
+        console.log("nuevo paciente")
+    },[pacientes])
 
     return ( 
         <div className="md:w-1/2 lg:w-4/5 md:h-screen overflow-y-scroll">  
