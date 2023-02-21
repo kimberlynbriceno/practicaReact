@@ -7,8 +7,13 @@ import Pacientes from "./components/Pacientes";
 function App() {
 
       const [pacientes, setPacientes] = useState([]);
-      const [paciente, setPaciente] = useState({})
+      const [paciente, setPaciente] = useState({});
 
+      const eliminarPaciente = (id) => {
+      const pacientesActulizados = pacientes.filter (paciente => paciente.id !== id)
+      setPacientes(pacientesActulizados) }
+
+       
 
   return (
     <div className="container mx-7">
@@ -20,11 +25,14 @@ function App() {
      pacientes={pacientes}
      setPacientes={setPacientes}  
      paciente={paciente}
+     setPaciente={setPaciente  }
      />
 
      <Listado
      pacientes={pacientes }
-     setPaciente={setPaciente}/>
+     setPaciente={setPaciente}
+     eliminarPaciente={eliminarPaciente}
+     />
      </div>
     </div>
   );

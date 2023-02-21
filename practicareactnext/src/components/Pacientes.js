@@ -1,7 +1,13 @@
 
-function Pacientes ({pacientes,setPaciente}) {
-   
+function Pacientes ({pacientes,setPaciente, eliminarPaciente}) {
+   const {nombre, nombrePropietario , email, alta, sintomas, id} = pacientes
 
+   const handleEliminar = ()=> {
+    const respuesta = window.confirm("Deseas eliminar este registro?")
+    if(respuesta){
+        eliminarPaciente(id)
+    }
+   }
 
     return ( 
         <div className="bg-gray-100 shadow-md px-5 py-10 rounded-xl m-5 mr-1 ">
@@ -27,7 +33,9 @@ function Pacientes ({pacientes,setPaciente}) {
             className="bg-red-800 rounded-md uppercase text-white p-3 font-bold mx-4 hover:bg-red-600  w-2/5 " >
                 editar
             </button>
-            <button type="button" className= "bg-gray-800 rounded-md uppercase text-white p-3 font-bold mx-4 hover:bg-gray-600 w-2/5  " >
+            <button type="button" 
+            onClick={handleEliminar}
+            className= "bg-gray-800 rounded-md uppercase text-white p-3 font-bold mx-4 hover:bg-gray-600 w-2/5  " >
                 eliminar
             </button>
         </div>

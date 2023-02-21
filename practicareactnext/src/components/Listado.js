@@ -2,10 +2,13 @@ import { useEffect } from "react";
 import Pacientes from "./Pacientes";
 
 
-function Listado ({pacientes, setPaciente}) {
+function Listado ({pacientes, setPaciente, eliminarPaciente}) {
 
     useEffect(()=>{
-        console.log("nuevo paciente")
+        if(pacientes.length > 0){
+             console.log(pacientes)
+        }
+       
     },[pacientes])
 
     return ( 
@@ -20,7 +23,9 @@ function Listado ({pacientes, setPaciente}) {
                 <Pacientes
                 key={pacientes.id}
                 pacientes={pacientes}
-                setPaciente={setPaciente}/>
+                setPaciente={setPaciente}
+                eliminarPaciente={eliminarPaciente}
+                />
                 )
 
         }
