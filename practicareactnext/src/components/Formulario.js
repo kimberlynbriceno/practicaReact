@@ -19,7 +19,7 @@ function Formulario ({pacientes, setPacientes, paciente, setPaciente}) {
              setNombrePropietario(paciente.nombrePropietario) 
             setEmail(paciente.email) 
             setAlta(paciente.alta) 
-            setSintomas(paciente.sintomas) 
+            setSintomas(paciente.sintomas)    
         }
     },[paciente]) 
  
@@ -57,17 +57,20 @@ function Formulario ({pacientes, setPacientes, paciente, setPaciente}) {
 
             if(paciente.id){
             
-            objetoPacientes.id = pacientes.id
+            objetoPacientes.id = paciente.id 
             
             const pacientesActulizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPacientes : pacienteState )
             setPacientes(pacientesActulizados)
+            setPaciente({})
          
+            
+
             }else{
                 objetoPacientes.id = generarId()
                 setPacientes([...pacientes, objetoPacientes])
             }
 
-
+           
 
             setNombre("")
             setNombrePropietario("")
