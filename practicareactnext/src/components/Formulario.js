@@ -1,10 +1,10 @@
 import {useState, useEffect} from "react"
-import Errores from "./Errores"   
+import Errores from "./Errores"
 import Pacientes from "./Pacientes"
 
 
  
-function Formulario ({pacientes, setPacientes, paciente, setPaciente }) {
+function Formulario ({pacientes, setPacientes, paciente, setPaciente}) {
     const [nombre, setNombre] = useState("")
     const [nombrePropietario, setNombrePropietario] = useState("")
     const [email, setEmail] = useState("")
@@ -56,15 +56,13 @@ function Formulario ({pacientes, setPacientes, paciente, setPaciente }) {
             }
 
             if(paciente.id){
-            // editando registro
-            objetoPacientes.id = paciente.id
+            
+            objetoPacientes.id = pacientes.id
             
             const pacientesActulizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPacientes : pacienteState )
             setPacientes(pacientesActulizados)
-            setPaciente({}) 
          
             }else{
-                // nuevo registro 
                 objetoPacientes.id = generarId()
                 setPacientes([...pacientes, objetoPacientes])
             }
