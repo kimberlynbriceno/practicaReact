@@ -9,17 +9,19 @@ function App() {
       const [pacientes, setPacientes] = useState([]);
       const [paciente, setPaciente] = useState({});
 
-      useEffect(()=>{
-        const obtenerLs = () => {
-          const pacientesLS = JSON.parse(localStorage.getItem("paciente")) ?? [];
-          setPacientes(pacientesLS)   
-        } 
-        obtenerLs()
-      }, [])
-
       useEffect(() => {
-        localStorage.setItem("pacientes", JSON.stringify(pacientes))
-      }, [pacientes])
+        const obtenerLs = () => {
+          const pacientesLS = JSON.parse(localStorage.getItem("pacientes")) ?? [];
+          setPacientes(pacientesLS);
+        };
+        obtenerLs();
+      }, []);
+      
+      useEffect(() => {
+        localStorage.setItem("pacientes", JSON.stringify(pacientes));
+      }, [pacientes]);
+      
+      
  
 
       const eliminarPaciente = (id) => {
